@@ -1,0 +1,30 @@
+# Znap
+source ~/zsh-snap/znap.zsh
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-syntax-highlighting
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+# End of lines configured by zsh-newuser-install
+#
+# Starship
+eval "$(starship init zsh)"
+
+# Colored ls
+alias ls='ls --color=auto'
+
+# ruby-colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+PATH=$PATH:/home/lem/.local/share/gem/ruby/3.0.0/bin
+alias lc='colorls -lA --sd'
+
+# Lemuel's
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+bindkey '^[[3~' delete-char
+
