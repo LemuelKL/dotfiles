@@ -119,12 +119,12 @@ hc set frame_border_active_color '#222222cc'
 hc set frame_border_normal_color '#101010cc'
 hc set frame_bg_normal_color '#565656aa'
 hc set frame_bg_active_color $ORANGE
-hc set frame_border_width 1
+hc set frame_border_width 0
 # hc set always_show_frame on # DEPRECATED
 hc set show_frame_decorations if_empty
 hc set frame_bg_transparent on
-hc set frame_transparent_width 5
-hc set frame_gap 10
+hc set frame_transparent_width 2
+hc set frame_gap 8
 hc set frame_active_opactiy 100
 hc set frame_normal_opacity 50
 
@@ -144,7 +144,7 @@ hc attr theme.active.tab_title_color '#ababab'
 hc attr theme.normal.title_color '#898989'
 hc attr theme.inner_width 0
 hc attr theme.inner_color white
-hc attr theme.border_width 4
+hc attr theme.border_width 2
 hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 0
 hc attr theme.floating.outer_color black
@@ -159,7 +159,7 @@ done
 hc attr theme.tiling.outer_width 1
 hc attr theme.background_color white # '#141414'
 
-hc set window_gap 10
+hc set window_gap 8
 hc set frame_padding 0
 hc set smart_window_surroundings off
 hc set smart_frame_surroundings off
