@@ -102,7 +102,7 @@ hc mouseunbind --all
 hc mousebind $Mod-Button1 move
 hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
-hc set focus_follows_mouse true
+hc set focus_follows_mouse false
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor
@@ -115,55 +115,49 @@ hc keybind $Mod-i jumpto urgent
 ORANGE='#FB8C00'
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '#222222cc'
-hc set frame_border_normal_color '#101010cc'
-hc set frame_bg_normal_color '#565656aa'
-hc set frame_bg_active_color $ORANGE
-hc set frame_border_width 0
-# hc set always_show_frame on # DEPRECATED
+hc set frame_border_active_color '#FFFFFF40'
+hc set frame_border_normal_color '#FFFFFF40'
+hc set frame_bg_normal_color '#00000040'
+hc set frame_bg_active_color '#11111140'
+hc set frame_border_width 4
 hc set show_frame_decorations if_empty
-hc set frame_bg_transparent on
+hc set frame_bg_transparent false
 hc set frame_transparent_width 2
-hc set frame_gap 8
-hc set frame_active_opactiy 100
-hc set frame_normal_opacity 50
+hc set frame_gap 4
+hc set frame_active_opactiy 45
+hc set frame_normal_opacity 30
 
-# hc attr theme.title_height 15
-# hc attr theme.title_when always
-# hc attr theme.title_font 'Dejavu Sans:pixelsize=12'  # example using Xft
-# hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
-# hc attr theme.title_depth 3  # space below the title's baseline
-hc attr theme.active.color $ORANGE
-hc attr theme.title_color '#fffff'
-hc attr theme.normal.color '#454545'
-hc attr theme.urgent.color red
-hc attr theme.tab_color '#1F1F1Fdd'
-hc attr theme.active.tab_color '#2B4F0Add'
-hc attr theme.active.tab_outer_color '#6C8257dd'
-hc attr theme.active.tab_title_color '#ababab'
-hc attr theme.normal.title_color '#898989'
-hc attr theme.inner_width 0
-hc attr theme.inner_color white
-hc attr theme.border_width 2
-hc attr theme.floating.border_width 4
-hc attr theme.floating.outer_width 0
-hc attr theme.floating.outer_color black
-hc attr theme.active.inner_color '#3E4A00'
-hc attr theme.urgent.inner_color '#9A65B0'
-hc attr theme.normal.inner_color '#606060'
-# copy inner color to outer_color
-for state in active urgent normal ; do
-    hc substitute C theme.${state}.inner_color \
-        attr theme.${state}.outer_color C
-done
-hc attr theme.tiling.outer_width 1
-hc attr theme.background_color white # '#141414'
-
-hc set window_gap 8
+hc set window_gap 4
 hc set frame_padding 0
-hc set smart_window_surroundings off
+hc set smart_window_surroundings false
 hc set smart_frame_surroundings off
 hc set mouse_recenter_gap 0
+
+hc attr theme.active.color $ORANGE
+# hc attr theme.title_color '#fffff'
+hc attr theme.normal.color '#454545'
+hc attr theme.urgent.color red
+# hc attr theme.tab_color '#1F1F1Fdd'
+# hc attr theme.active.tab_color '#2B4F0Add'
+# hc attr theme.active.tab_outer_color '#6C8257dd'
+# hc attr theme.active.tab_title_color '#ababab'
+# hc attr theme.normal.title_color '#898989'
+# hc attr theme.inner_width 0
+# hc attr theme.inner_color white
+hc attr theme.border_width 2
+# hc attr theme.floating.border_width 4
+# hc attr theme.floating.outer_width 0
+# hc attr theme.floating.outer_color black
+# hc attr theme.active.inner_color '#3E4A00'
+# hc attr theme.urgent.inner_color '#9A65B0'
+# hc attr theme.normal.inner_color '#606060'
+# # copy inner color to outer_color
+# for state in active urgent normal ; do
+#     hc substitute C theme.${state}.inner_color \
+#         attr theme.${state}.outer_color C
+# done
+# hc attr theme.tiling.outer_width 0
+# hc attr theme.background_color white # '#141414'
 
 # rules
 hc unrule -F
@@ -188,15 +182,6 @@ hc unlock
 # or simply:
 # hc detect_monitors
 
-# find the panel
-# panel=~/.config/herbstluftwm/panel.sh
-# panel=~/.config/polybar/launch.sh
-#[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(hc list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" "$monitor" &
-done
-
 # jyutping
 fcitx5 &
 
@@ -206,6 +191,6 @@ fcitx5 &
 # rofi
 hc keybind $Mod-d spawn rofi -show drun
 
-hc spawn picom
+hc spawn picom --no-fading-openclose
 hc spawn nitrogen --restore &
 hc spawn sh $HOME/.config/polybar/launch.sh
