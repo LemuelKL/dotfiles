@@ -55,7 +55,8 @@ fi
 #start-pulseaudio-x11 &
 
 # Alsa Sound Settings
-#alsactl --file ~/.config/asound.state restore
+alsactl --file ~/.config/asound.state restore
 
-#xset r rate 190 38; exec dwm
+# keyboard rate
+xset r rate 190 38
 
